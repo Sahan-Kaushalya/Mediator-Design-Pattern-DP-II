@@ -54,6 +54,42 @@ abstract class Flight {
 
 }
 
+class CommercialFlight extends Flight {
+
+    public CommercialFlight(AirTrafficControl airTrafficControl, String number) {
+        super(airTrafficControl, number);
+    }
+
+    @Override
+    public void receiveMessage(String message) {
+        System.out.println("Commercial Flight: " + getNumber() + " received message: " + message);
+    }
+}
+
+class PrivateFlight extends Flight {
+
+    public PrivateFlight(AirTrafficControl airTrafficControl, String number) {
+        super(airTrafficControl, number);
+    }
+
+    @Override
+    public void receiveMessage(String message) {
+        System.out.println("Private Flight: " + getNumber() + " received message: " + message);
+    }
+}
+
+class MilitaryFlight extends Flight {
+
+    public MilitaryFlight(AirTrafficControl airTrafficControl, String number) {
+        super(airTrafficControl, number);
+    }
+
+    @Override
+    public void receiveMessage(String message) {
+        System.out.println("Military Flight: " + getNumber() + " received message: " + message);
+    }
+}
+
 public class Test {
     public static void main(String[] args) {
 
