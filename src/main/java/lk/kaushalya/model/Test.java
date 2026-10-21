@@ -1,25 +1,28 @@
 package lk.kaushalya.model;
 
+import java.text.SimpleDateFormat;
+
 interface AirTrafficControl {
     public void requestTakeOff(Flight f);
-
     public void requestLanding(Flight f);
-
     public void notifyFlight(String message, Flight f);
+
 }
 
 class AirPortControlTower implements AirTrafficControl {
 
     @Override
     public void requestTakeOff(Flight f) {
+        System.out.println();
         System.out.println("Flight: " + f.getNumber() + " request permission to take-off");
-        notifyFlight("Take-off approved", f);
+        notifyFlight("Take-off approved , Take-off at: "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()), f);
     }
 
     @Override
     public void requestLanding(Flight f) {
+        System.out.println();
         System.out.println("Flight: " + f.getNumber() + " request permission to landing");
-        notifyFlight("Landing approved", f);
+        notifyFlight("Landing approved , Landing at: "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()), f);
     }
 
     @Override
@@ -91,7 +94,16 @@ class MilitaryFlight extends Flight {
 }
 
 public class Test {
+
     public static void main(String[] args) {
 
+        AirPortControlTower controlTower = new AirPortControlTower();
+        Flight commercialFlight = new CommercialFlight(controlTower, "C123");
+        Flight privateFlight = new PrivateFlight(controlTower, "P456");
+        Flight militaryFlight = new MilitaryFlight(controlTower, "M789");
+
+        commercialFlight.requestTakeOff();
+        privateFlight.requestLanding();
+        militaryFlight.requestTakeOff();
     }
 }
