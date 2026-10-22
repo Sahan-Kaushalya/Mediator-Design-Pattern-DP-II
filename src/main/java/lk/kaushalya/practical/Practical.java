@@ -183,7 +183,7 @@ class SilverCustomer extends Customer {
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("Silver Customer: " + getName() + "\nreceived message: " + message);
+        System.out.println("\nSilver Customer: " + getName() + "\nreceived message: " + message);
     }
 }
 
@@ -196,7 +196,7 @@ class GoldCustomer extends Customer {
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("Gold Customer: " + getName() + "\nreceived message: " + message);
+        System.out.println("\nGold Customer: " + getName() + "\nreceived message: " + message);
     }
 }
 
@@ -209,7 +209,7 @@ class Bike extends Taxi {
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("Bike: " + getCarNumber() + "\nreceived message: " + message);
+        System.out.println("\nBike: " + getCarNumber() + "\nreceived message: " + message);
     }
 }
 
@@ -222,7 +222,7 @@ class Tuk extends Taxi {
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("Tuk: " + getCarNumber() + "\nreceived message: " + message);
+        System.out.println("\nTuk: " + getCarNumber() + "\nreceived message: " + message);
     }
 }
 
@@ -235,7 +235,7 @@ class Car extends Taxi {
 
     @Override
     public void receiveMessage(String message) {
-        System.out.println("Car: " + getCarNumber() + "\nreceived message: " + message);
+        System.out.println("\nCar: " + getCarNumber() + "\nreceived message: " + message);
     }
 }
 
@@ -273,15 +273,14 @@ public class Practical {
         System.out.println("------ Customer Requests ------");
         System.out.println();
         SilverCustomer1.requestTaxi("Car");
-        System.out.println();
+        System.out.println("-------------------------------");
         GoldCustomer1.requestTaxi("Bike");
-        System.out.println();
+        System.out.println("-------------------------------");
         SilverCustomer2.requestTaxi("Tuk");
-        System.out.println();
+        System.out.println("-------------------------------");
         GoldCustomer2.requestTaxi("Car");
-        System.out.println();
+        System.out.println("-------------------------------");
         GoldCustomer3.requestTaxi("Car");
-        System.out.println();
         System.out.println("-------------------------------");
         System.out.println();
         System.out.println("---- Taxi Service Testing Completed ----");
