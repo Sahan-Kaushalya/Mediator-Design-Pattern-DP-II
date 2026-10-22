@@ -24,7 +24,7 @@ interface TaxiMediator {
 
     void assignTaxi(Taxi taxi, Customer customer);
 
-    void NotifyDriver(Taxi taxi, Customer customer);
+    void notifyDriver(Taxi taxi, Customer customer);
 
     void registerTaxi(Taxi taxi);
 }
@@ -39,7 +39,7 @@ class TaxiCenterApp implements TaxiMediator {
             for (Taxi taxi : registeredTaxis) {
                 if (taxi.getAvailable() && taxi.getType().equalsIgnoreCase(taxiType)) {
                     assignTaxi(taxi, customer);
-                    NotifyDriver(taxi, customer);
+                    notifyDriver(taxi, customer);
                     taxi.setAvailable(false);
                     return;
                 }
@@ -59,7 +59,7 @@ class TaxiCenterApp implements TaxiMediator {
     }
 
     @Override
-    public void NotifyDriver(Taxi taxi, Customer customer) {
+    public void notifyDriver(Taxi taxi, Customer customer) {
         taxi.receiveMessage("New customer request from " + customer.getName() + "\nat location: " + customer.getLocation() + "" +
                 "\nto destination: " + customer.getDestination()+"\nCustomer phone number: " + customer.getPhoneNumber());
 
@@ -69,6 +69,7 @@ class TaxiCenterApp implements TaxiMediator {
     public void registerTaxi(Taxi taxi) {
         if (taxi != null && !registeredTaxis.contains(taxi)) {
             registeredTaxis.add(taxi);
+            System.out.println("Taxi registered: " + taxi.getCarNumber() + " driven by: " + taxi.getDriverName()+" Taxi Type: "+taxi.getType());
         }else {
             System.out.println("This taxi is already registered: "+taxi.getCarNumber());
         }
@@ -271,7 +272,6 @@ public class Practical {
         System.out.println("-------------------------------");
         System.out.println();
         System.out.println("------ Customer Requests ------");
-        System.out.println();
         SilverCustomer1.requestTaxi("Car");
         System.out.println("-------------------------------");
         GoldCustomer1.requestTaxi("Bike");
